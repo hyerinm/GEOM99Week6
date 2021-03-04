@@ -35,24 +35,24 @@
         });
 
         const view = new MapView({
-          map: map,
+            container: "viewDiv",
+            map: map,
+            center: [-103.42972316789869,55.98250002263768],
+            zoom: 2
+         });
 
           //https://developers.arcgis.com/web-map-specification/objects/extent//
           extent: {
-            xmin: -15390137.0231,
-            ymin: 5674684.9799,
-            xmax: -6750918.3381,
-            ymax: 13403997.2801,
             spatialReference: 102100 // Lamber to Web Mercator
           }
-        });
+
 
         var featureLayer = new FeatureLayer({
           url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0",
           labelingInfo: [labelClass],
         });
 
-        map.add(featureLayer);
+        map.add(featureLayer, 0);
 
     });    
   </script>

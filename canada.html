@@ -1,144 +1,57 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <title>Canadian Geography For Kids</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title> The Provinces of Canada</title>
+  <style>
+    html, body, #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.18/"></script>
 
-    <style>
-      html,
-      body,
-      #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 90%;
-        width: 100%;
-      }
-        #viewDiv {
-          max-width: 90%;
-          /* display: block; */
-          margin-left: auto;
-          margin-right: auto;
-        }
+  <script>
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",    
+    "esri/layers/FeatureLayer"
+    
+ 
 
-        figure.figure-general {
-          margin-left: 6em;
-          margin-right: auto;
-        }
-    </style>
+  ], function(esriConfig,Map, MapView, FeatureLayer) {
 
-    <link
-      rel="stylesheet"
-      href="https://js.arcgis.com/4.18/esri/themes/light/main.css"
-    />
-    <script src="https://js.arcgis.com/4.18/"></script>
+  esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
 
-    <script>
-      require([
-        "esri/Map",
-        "esri/views/MapView",
-        "esri/layers/FeatureLayer",
-        "esri/widgets/Search",
-        "esri/widgets/Legend",
-      ], function (Map, MapView, FeatureLayer, Search, Legend) {
-        var map = new Map({
-          basemap: "gray",
-        });
+  const map = new Map({
+    basemap: "arcgis-topographic"
+  });
 
-        // Using map view module to display instead of WebMap
-        var view = new MapView({
-          container: "viewDiv",
-          map: map,
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-103.42972316789869,55.98250002263768],
+    zoom: 2
+  });
 
-          // Extent changed as a result of reprojection to CRS Lambert to Web Merc
-          // Used http://bboxfinder.com to find extent
-          extent: {
-            // autocasts as new Extent()
-            xmin: -15000000,
-            ymin: 5800000,
-            xmax: -6000000,
-            ymax: 9000000,
-            spatialReference: 102100, // Web mercator
-          },
-        });
 
-        // Adds the search widget to the top right corner of the view
-        view.ui.add(new Search({ view: view }), "top-right");
+// Parks and open spaces (polygons)
+  const FeatureLayer = new FeatureLayer({
+    url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0"
+  });
 
-        // Despite not having a legend in web map view, this turned out okay
-        view.ui.add(new Legend({ view: view }), "bottom-right");
+    map.add(FeatureLayer, 0);
+  });    
+</script>
 
-        const labelClass = {
-          // autocasts as new LabelClass()
-          symbol: {
-            type: "text", // autocasts as new TextSymbol()
-            color: "#241e1e",
-            font: {
-              // autocast as new Font()
-              family: "Merriweather",
-              size: 8,
-              weight: "bold",
-            },
-          },
-          labelPlacement: "above-center",
-          labelExpressionInfo: {
-            expression: "$feature.PRNAME",
-          },
-        };
-
-        /********************
-         * Add popup templates
-         ********************/
-
-        var cityTemplate = {
-          // TERM and PROV are fields in the service containing the cities
-          // I want to use Arcade to link these two together, i wonder if that's possible
-          // https://www.arcgis.com/apps/Cascade/index.html?appid=1c225c84ba234487b7e9a9180465fd58
-          title: "{TERM} in {PROV}",
-          content: [
-            {
-              type: "fields",
-              fieldInfos: [
-                {
-                  fieldName: "NAME",
-                  label: "Name",
-                },
-                // {
-                //   fieldName: "PROV",
-                //   label: "Province Abreviation",
-                // },
-              ],
-            },
-          ],
-        };
-
-        /********************
-         * Add feature layer
-         ********************/
-
-        // Adding Canada Maps from Luna
-        var featureLayer = new FeatureLayer({
-          url:
-            "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0",
-          labelingInfo: [labelClass],
-        });
-
-        map.add(canadianCities);
-      });
-
-    </script>
-  </head>
-  <body>
-
-    <div id="viewDiv"></div>
-
-  </body>
+</head>
+<body>
+  <h1> The Provinces and Territories of Canada </h1>
+  <div id="viewDiv"></div>
+</body>
 </html>

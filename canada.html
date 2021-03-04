@@ -10,7 +10,7 @@
     #viewDiv {
         padding: 0;
         margin: 0;
-        height: 100%;
+        height: 90%;
         width: 100%;
     }
   </style>
@@ -37,9 +37,18 @@
         const view = new MapView({
             container: "viewDiv",
             map: map,
-            center: [-103.42972316789869,55.98250002263768],
-            zoom: 4
-         });
+            
+          // Extent changed as a result of reprojection to CRS Lambert to Web Merc
+          // Used http://bboxfinder.com to find extent
+          extent: {
+            // autocasts as new Extent()
+            xmin: -15000000,
+            ymin: 5800000,
+            xmax: -6000000,
+            ymax: 9000000,
+            spatialReference: 102100, // Web mercator
+          },
+        });
 
         var featureLayer = new FeatureLayer({
           url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0",

@@ -41,18 +41,12 @@
             zoom: 4
          });
 
-          //https://developers.arcgis.com/web-map-specification/objects/extent//
-          //extent: {
-            //spatialReference: 102100 // Lamber to Web Mercator
-          //}
-
-
         var featureLayer = new FeatureLayer({
           url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0",
           labelingInfo: [labelClass],
         });
 
-        map.add(featureLayer, 0);
+        map.add(featureLayer);
 
     });    
   </script>

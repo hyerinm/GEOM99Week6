@@ -36,14 +36,15 @@
         zoom: 4
     });
 
+    //https://developers.arcgis.com/javascript/latest/sample-code/labels-basic/
     const labelClass = {
    // autocasts as new LabelClass()
         symbol: {
             type: "text",  // autocasts as new TextSymbol()
-            color: "green",
+            color: "white",
             font: {  // autocast as new Font()
-            family: "Playfair Display",
-            size: 12,
+            family: "'Courier New', Courier, monospace",
+            size: 10,
             weight: "bold"
         }
         },

@@ -36,24 +36,36 @@
         zoom: 3
     });
 
-    var provinceRenderer = {
-                type: "unique-value", // autocasts as new UniqueValueRenderer()
-                field: "PRNAME",
-                defaultSymbol: {
-                    type: "simple-fill", // autocasts as new SimpleFillSymbol()
-                    style: "none",
-                    outline: {
-                    width: 1,
-                    color: "white"
-                    }
-                },
-                label: "Province boundaries"
-            };
+
+    view.ui.add(new Search({ view: view }), "top-right");
+
+
+    view.ui.add(new Legend({ view: view }), "bottom-right");
+
+    const labelClass = {
+          symbol: {
+            type: "text", 
+            color: "#241e1e",
+            font: {
+         
+              family: "Merriweather",
+              size: 8,
+              weight: "bold",
+            },
+          },
+          labelPlacement: "above-center",
+          labelExpressionInfo: {
+            expression: "$feature.PRNAME",
+          },
+        };
 
     var featureLayer = new FeatureLayer({
     url:
         "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0"
+        
     });
+
+    
     map.add(featureLayer);
 });    
 </script>

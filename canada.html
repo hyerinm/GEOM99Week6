@@ -42,9 +42,9 @@
          });
 
           //https://developers.arcgis.com/web-map-specification/objects/extent//
-          extent: {
-            spatialReference: 102100 // Lamber to Web Mercator
-          }
+          //extent: {
+            //spatialReference: 102100 // Lamber to Web Mercator
+          //}
 
 
         var featureLayer = new FeatureLayer({
@@ -52,7 +52,7 @@
           labelingInfo: [labelClass],
         });
 
-        map.add(featureLayer, 0);
+        map.add(featureLayer);
 
     });    
   </script>

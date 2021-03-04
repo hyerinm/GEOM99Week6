@@ -56,7 +56,8 @@
 
     var featureLayer = new FeatureLayer({
     url:
-        "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0"
+        "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0",
+        labelingInfo: [labelClass],
     });
     map.add(featureLayer);
   });    

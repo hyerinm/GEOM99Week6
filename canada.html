@@ -16,32 +16,46 @@
   <script src="https://js.arcgis.com/4.18/"></script>
 
   <script>
-  require([
-    "esri/config",
-    "esri/Map",
-    "esri/views/MapView", 
-    "esri/layers/FeatureLayer"
-  ], function(esriConfig, Map, MapView, FeatureLayer) {
+    require([
+        "esri/config",
+        "esri/Map",
+        "esri/views/MapView", 
+        "esri/layers/FeatureLayer"
+    ], function(esriConfig, Map, MapView, FeatureLayer) {
 
-  esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
+    esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
 
-  const map = new Map({
-    basemap: "arcgis-topographic"
-  });
+    const map = new Map({
+        basemap: "arcgis-topographic"
+    });
 
-  const view = new MapView({
-    container: "viewDiv",
-    map: map,
-    center: [-103.42972316789869,55.98250002263768],
-    zoom: 3
-  });
+    const view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [-103.42972316789869,55.98250002263768],
+        zoom: 3
+    });
 
-  var featureLayer = new FeatureLayer({
-  url:
-    "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0"
-});
-map.add(featureLayer);
-  });    
+    var provinceRenderer = {
+                type: "unique-value", // autocasts as new UniqueValueRenderer()
+                field: "PRNAME",
+                defaultSymbol: {
+                    type: "simple-fill", // autocasts as new SimpleFillSymbol()
+                    style: "none",
+                    outline: {
+                    width: 1,
+                    color: "white"
+                    }
+                },
+                label: "Province boundaries"
+            };
+
+    var featureLayer = new FeatureLayer({
+    url:
+        "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0"
+    });
+    map.add(featureLayer);
+});    
 </script>
 
 </head>

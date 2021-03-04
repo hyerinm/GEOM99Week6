@@ -3,65 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title> The Provinces of Canada </title>
+  <title>ArcGIS API for JavaScript Tutorials: Add a feature layer</title>
   <style>
-    html, 
-    body, 
-    #viewDiv {
-        padding: 0;
-        margin: 0;
-        height: 90%;
-        width: 100%;
+    html, body, #viewDiv {
+      background-color: green;
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
     }
   </style>
-
   <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.18/"></script>
 
   <script>
-    require([
-             "esri/config",
-             "esri/Map", 
-             "esri/views/MapView",
-             "esri/layers/FeatureLayer",
-             "esri/widgets/Search",
-             "esri/widgets/Legend",
-            ], function (esriConfig, Map, MapView, FeatureLayer, Search, Legend) {
+  require([
+    "esri/config",
+    "esri/Map",
+    "esri/views/MapView",
+    
+    "esri/layers/FeatureLayer"
+    
+ 
 
-        esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
+  ], function(esriConfig,Map, MapView, FeatureLayer) {
 
-        const map = new Map({
-          basemap: "arcgis-topographic" // Basemap layer service
-        });
+  esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
 
-        const view = new MapView({
-            container: "viewDiv",
-            map: map,
-            
-          // Extent changed as a result of reprojection to CRS Lambert to Web Merc
-          // Used http://bboxfinder.com to find extent
-          extent: {
-            // autocasts as new Extent()
-            xmin: -15000000,
-            ymin: 5800000,
-            xmax: -6000000,
-            ymax: 9000000,
-            spatialReference: 102100, // Web mercator
-          },
-        });
+  const map = new Map({
+    basemap: "arcgis-topographic"
+  });
 
-        var featureLayer = new FeatureLayer({
-          url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0",
-          labelingInfo: [labelClass],
-        });
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-103.42972316789869,55.98250002263768],
+    zoom: 2
+  });
 
-        map.add(featureLayer);
 
-    });    
-  </script>
+// Parks and open spaces (polygons)
+  const parksLayer = new FeatureLayer({
+    url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0"
+  });
 
-  </head>
-  <body>
-    <div id="viewDiv"></div>
-  </body>
+    map.add(parksLayer, 0);
+  });    
+</script>
+
+</head>
+<body>
+  <h1> The Provinces and Territories of Canada </h1>
+  <div id="viewDiv"></div>
+</body>
 </html>

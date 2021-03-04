@@ -22,8 +22,10 @@
         "esri/views/MapView", 
         "esri/layers/FeatureLayer",
         "esri/widgets/Search",
-        "esri/widgets/Legend"
-    ], function(esriConfig, Map, MapView, FeatureLayer, Search, Legend) {
+        "esri/widgets/Legend",
+        "esri/Graphic",
+        "esri/layers/GraphicsLayer"
+    ], function(esriConfig, Map, MapView, FeatureLayer, Search, Legend, Graphic, GraphicsLayer) {
 
     esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
 
@@ -37,11 +39,61 @@
         center: [-98.45488091350423,62.55016946781701],
         zoom: 4
     });
+
+    const graphicsLayer = new GraphicsLayer();
+        map.add(graphicsLayer);
+
+    const point = { //Create a point
+        type: "multipoint",
+        points: [
+            [-135.054931640625, 60.72157115165579],
+            [-123.12377929687499,49.26421999734763],
+            [-113.50662231445312, 53.53541058046375 ],
+            [-106.666259765625, 52.14023120108506 ],
+            [-97.1685791015625, 49.87693780072528 ],
+            [-79.39407348632811, 43.65098183989866],
+            [-114.378662109375, 62.469184741604806 ],
+            [-68.51898193359375, 63.74849078141057 ],
+            [-52.657470703125, 47.59505101193038],
+            [-63.1329345703125,, 46.23780244949404 ],
+            [-63.58886718749999, 44.645208223744035 ],
+            [-66.64443969726562, 45.96642454131025 ],
+            [-73.6138916015625, 45.49287107405929 ],
+        ]
+    };   
     
+    const simpleMarkerSymbol = {
+        type: "simple-marker",
+        color: [0, 204, 204],  // Baby blue
+        outline: {
+        color: [255, 255, 255], // White
+        width: 1
+        }
+        };
+    const popupTemplate = {
+        title: "{Name}",
+        content: "{Description}"
+        }
+    const attributes = {
+        color: [255, 204, 229],
+        Name: "Galesnjak Island",
+        Description: "The area surface of this island is 132km^2. <br> I love you 100000000 times the area surface. "
+        }
+
+    const pointGraphic = new Graphic({
+        geometry: point,
+        symbol: simpleMarkerSymbol,
+
+        attributes: attributes,
+        popupTemplate: popupTemplate
+        });
+
+        graphicsLayer.add(pointGraphic);  
+
     // Adds the search widget to the top right corner of the view
     view.ui.add(new Search({ view: view }), "top-right");
 
-    // Despite not having a legend in web map view, this turned out okay
+    // Add widget to the bottom right corner of the view
     view.ui.add(new Legend({ view: view }), "bottom-right");
 
     //https://developers.arcgis.com/javascript/latest/sample-code/labels-basic/
@@ -58,7 +110,7 @@
         },
         labelPlacement: "above-center",
         labelExpressionInfo: {
-        expression: "$feature.PRNAME"
+        expression: "$feature.PREABBR"
         }
     };
 

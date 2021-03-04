@@ -37,11 +37,13 @@
   });
 
 
-  const parksLayer = new FeatureLayer({
-    url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0"
-  });
+  const canada = new FeatureLayer({
+    portalItem: {
+        id= "70e5b04ed53f4fadbf45a7524511621c"
+  }
+});
 
-    map.add(parksLayer, 0);
+    map.add(FeatureLayer);
   });    
 </script>
 

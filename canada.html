@@ -20,13 +20,16 @@
 
   <script>
     require([
+             "esri/config",
              "esri/Map", 
              "esri/views/MapView",
              "esri/layers/FeatureLayer",
              "esri/widgets/Search",
              "esri/widgets/Legend",
-            ], function (Map, MapView, FeatureLayer, Search, Legend) {
- 
+            ], function (esriConfig, Map, MapView, FeatureLayer, Search, Legend) {
+
+        esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
+
         const map = new Map({
           basemap: "arcgis-topographic" // Basemap layer service
         });
@@ -45,8 +48,7 @@
         });
 
         var featureLayer = new FeatureLayer({
-          url:
-            "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0",
+          url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/HmunCanada/MapServer/0",
           labelingInfo: [labelClass],
         });
 

@@ -20,8 +20,10 @@
         "esri/config",
         "esri/Map",
         "esri/views/MapView", 
-        "esri/layers/FeatureLayer"
-    ], function(esriConfig, Map, MapView, FeatureLayer) {
+        "esri/layers/FeatureLayer",
+        "esri/widgets/Search",
+        "esri/widgets/Legend"
+    ], function(esriConfig, Map, MapView, FeatureLayer, Search, Legend) {
 
     esriConfig.apiKey = "AAPK6a7fbbd47cc543beb5dd6f9dca65c788i4dAOKVZEHmUy1heCU7lV7w1AVMdIaV7oMkMvfEwTAmxqpzRDBzcxSvGImZHSQ6u";
 
@@ -35,13 +37,19 @@
         center: [-98.45488091350423,62.55016946781701],
         zoom: 4
     });
+    
+    // Adds the search widget to the top right corner of the view
+    view.ui.add(new Search({ view: view }), "top-right");
+
+    // Despite not having a legend in web map view, this turned out okay
+    view.ui.add(new Legend({ view: view }), "bottom-right");
 
     //https://developers.arcgis.com/javascript/latest/sample-code/labels-basic/
     const labelClass = {
    // autocasts as new LabelClass()
         symbol: {
             type: "text",  // autocasts as new TextSymbol()
-            color: "white",
+            color: "black",
             font: {  // autocast as new Font()
             family: "'Courier New', Courier, monospace",
             size: 10,

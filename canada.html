@@ -36,6 +36,24 @@
         zoom: 3
     });
 
+    const labelClass = {
+          // autocasts as new LabelClass()
+          symbol: {
+            type: "text", // autocasts as new TextSymbol()
+            color: "#241e1e",
+            font: {
+              // autocast as new Font()
+              family: "Merriweather",
+              size: 8,
+              weight: "bold",
+            },
+          },
+          labelPlacement: "above-center",
+          labelExpressionInfo: {
+            expression: "$feature.PRNAME",
+          },
+        };
+
     var featureLayer = new FeatureLayer({
     url:
         "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0"

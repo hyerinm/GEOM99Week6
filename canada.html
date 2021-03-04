@@ -32,9 +32,27 @@
     const view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [-103.42972316789869,55.98250002263768],
+        center: [-98.45488091350423,62.55016946781701],
         zoom: 4
     });
+
+    const labelClass = {
+   // autocasts as new LabelClass()
+        symbol: {
+            type: "text",  // autocasts as new TextSymbol()
+            color: "green",
+            font: {  // autocast as new Font()
+            family: "Playfair Display",
+            size: 12,
+            weight: "bold"
+        }
+        },
+        labelPlacement: "above-center",
+        labelExpressionInfo: {
+        expression: "$feature.PRNAME"
+        }
+    };
+
 
     var featureLayer = new FeatureLayer({
     url:

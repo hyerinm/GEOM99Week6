@@ -5,12 +5,15 @@
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
   <title> Oh! Canada </title>
   <style>
-    html,
+    html{
+        height: 100%;
+    }
     body{
         font-family: 'Courier New', Courier, monospace;
         background-color: beige;
         margin-bottom: 50px;
-        height: 90%;
+        min-height: 100%;
+        position: relative;
         text-align: center;
       }
     h1{
@@ -37,14 +40,18 @@
         margin-right: auto;
         }
     .footer {
-        position: fixed;
         left: 0;
         bottom: 0;
+        height: 115px;
+        position:absolute; 
         width: 100%;
         background-color: red;
         color: white;
         text-align: center;
     }
+    .footer-ghost {
+         height:115px; 
+         }
 
   </style>
   <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">

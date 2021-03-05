@@ -15,5 +15,8 @@ Item on ArcGIS Online: https://fleming.maps.arcgis.com/home/webmap/viewer.html?u
 ### Share a web map to ArcGIS Online
 Web Map on ArcGIS Online: https://fleming.maps.arcgis.com/home/webmap/viewer.html?webmap=4c88da494dc341508a2b242dc769a85a
 
+### Create an application using your Luna Canada Map Service
+Oh! Canada: https://hyerinm.github.io/GEOM99Week6/canada.html
+
 <pre>
 <code>

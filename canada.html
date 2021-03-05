@@ -65,10 +65,11 @@
     };
 
 
-    var canada = new FeatureLayer({
-    url: 
+    var featureLayer = new FeatureLayer({
+    url:
         "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0",
         labelingInfo: [labelClass],
+
         popupTemplate: {
                 // autocasts as new PopupTemplate()
                 // template taken from: https://developers.arcgis.com/javascript/latest/sample-code/layers-dynamicdatalayer-table-join/
@@ -87,30 +88,34 @@
                         label: "French Abbreviation",
                         visible: true,
                       },
+                      {
+                        fieldName: "PRUID",
+                        label: "Unique Identifier",
+                        visible: true,
+                      }
                     ]
                   }
                 ]
               }
             });
 
-            map.add(canada);
+            map.add(featureLayer);
             const graphicsLayer = new GraphicsLayer();
-            map.add(graphicsLayer);
+             map.add(graphicsLayer);
 
-            const capital = {
+            const simpleMarkerSymbol = {
                 type: "simple-marker",
                 color: [0, 204, 204],  // Baby blue
                 outline: {
-                    color: [255, 255, 255], // White
-                    width: 1
-                }
+                color: [255, 255, 255], // White
+                width: 1}
             };
 
             const cities = { //Create points for cities 
             type: "multipoint",
             points: [
                 [-135.054931640625, 60.72157115165579],
-                [-123.12377929687499, 49.26421999734763],
+                [-123.12377929687499,49.26421999734763],
                 [-113.50662231445312, 53.53541058046375],
                 [-106.666259765625, 52.14023120108506],
                 [-97.1685791015625, 49.87693780072528],
@@ -127,7 +132,7 @@
 
             const pointGraphic = new Graphic({
                 geometry: cities,
-                symbol: captial
+                symbol: simpleMarkerSymbol
             });
 
         graphicsLayer.add(pointGraphic);  

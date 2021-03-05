@@ -66,11 +66,10 @@
 
 
     var featureLayer = new FeatureLayer({
-    url:
+    url: 
         "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0",
         labelingInfo: [labelClass],
-
-        popupTemplate: [{
+        popupTemplate: {
                 // autocasts as new PopupTemplate()
                 // template taken from: https://developers.arcgis.com/javascript/latest/sample-code/layers-dynamicdatalayer-table-join/
                 title: "{PRNAME}",
@@ -97,20 +96,19 @@
                   }
                 ]
               }
-              
-            ]
             });
 
             map.add(featureLayer);
             const graphicsLayer = new GraphicsLayer();
-             map.add(graphicsLayer);
+            map.add(graphicsLayer);
 
             const simpleMarkerSymbol = {
                 type: "simple-marker",
                 color: [0, 204, 204],  // Baby blue
                 outline: {
-                color: [255, 255, 255], // White
-                width: 1}
+                    color: [255, 255, 255], // White
+                    width: 1
+                }
             };
 
             const cities = { //Create points for cities 
@@ -118,17 +116,17 @@
             points: [
                 [-135.054931640625, 60.72157115165579],
                 [-123.12377929687499,49.26421999734763],
-                [-113.50662231445312, 53.53541058046375 ],
-                [-106.666259765625, 52.14023120108506 ],
-                [-97.1685791015625, 49.87693780072528 ],
+                [-113.50662231445312, 53.53541058046375],
+                [-106.666259765625, 52.14023120108506],
+                [-97.1685791015625, 49.87693780072528],
                 [-79.39407348632811, 43.65098183989866],
-                [-114.378662109375, 62.469184741604806 ],
-                [-68.51898193359375, 63.74849078141057 ],
+                [-114.378662109375, 62.469184741604806],
+                [-68.51898193359375, 63.74849078141057],
                 [-52.657470703125, 47.59505101193038],
-                [-63.1329345703125,, 46.23780244949404 ],
-                [-63.58886718749999, 44.645208223744035 ],
-                [-66.64443969726562, 45.96642454131025 ],
-                [-73.6138916015625, 45.49287107405929 ],
+                [-63.1329345703125,, 46.23780244949404],
+                [-63.58886718749999, 44.645208223744035],
+                [-66.64443969726562, 45.96642454131025],
+                [-73.6138916015625, 45.49287107405929],
                 ]
             };   
 
@@ -139,8 +137,7 @@
 
         graphicsLayer.add(pointGraphic);  
     });
-    
-   
+     
 </script>
 
 </head>

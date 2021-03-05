@@ -14,11 +14,6 @@
         position: relative;
         text-align: center;
       }
-
-    .wrap{
-        min-height: 100%;
-        padding-bottom: 120px;
-    }
     h1{
           text-align: center;
           color: white;
@@ -43,13 +38,13 @@
         margin-right: auto;
         }
     .footer {
+        left: 0;
+        bottom: 0;
+        position:absolute; 
         width: 100%;
-        height: 50px;
-        margin-top: 50px;
-        background-color: #2e3472;
-        color: #fff;
+        background-color: red;
+        color: white;
         text-align: center;
-        line-height: 50px;
     }
 
 
@@ -179,87 +174,86 @@
 
 </head>
 <body>
-    <div class ="wrap">
-        <h1 style="font-size: 80px;"> &#127809; Discover Canada &#127809; </h1>
-        <h5 style="font-size: 40px;"></h5> <b>Canada</b> is the second largerst contry on earth - 10 million square kilometers.
-        Three oceans line Canada's frontiers: the Pacific Ocean in the west, <br>
-        the Atlantic Ocean in the east, and the Arctic Ocean to the north.  </h5>
-        <p> Below is the Map of Canada. You can explore the map by zooming in/out. Also, when you click on the marker, you will see abbreviation for each territory!
-        </p>
-        <div id="viewDiv"></div>
-        <p>
-            Canada has ten provinces and three territories. Each province and territory has its own capital city. 
-        </p>
+  <h1 style="font-size: 80px;"> &#127809; Discover Canada &#127809; </h1>
+  <h5 style="font-size: 40px;"></h5> <b>Canada</b> is the second largerst contry on earth - 10 million square kilometers.
+  Three oceans line Canada's frontiers: the Pacific Ocean in the west, <br>
+  the Atlantic Ocean in the east, and the Arctic Ocean to the north.  </h5>
+  <p> Below is the Map of Canada. You can explore the map by zooming in/out. Also, when you click on the marker, you will see abbreviation for each territory!
+  </p>
+  <div id="viewDiv"></div>
+  <p>
+      Canada has ten provinces and three territories. Each province and territory has its own capital city. 
+  </p>
 
-        <table class = "center">
-            <tr>
-            <th>REGION</th>
-            <td>PROVINCE/ TERRITORY (CAPITAL CITY)</td>
-            <td>FLAG</td>
-            </tr>
-            
-            <tr>
-            <th rowspan="4">Atlantic Provinces</th>
-            <td>Newfoundland and Labrador (St. John's)</td>
-            <td><figure><img src="images/NL.png" alt="Newfoundland" width="100px" height="75px"></figure></td>
-            </tr>
-            <tr>
-            <td>Prince Edward Island (Charlottetown)</td>
-            <td><figure><img src="images/PE.png" alt="PE" width="100px" height="75px"></figure></td>
-            </tr>
-            <tr>
-            <td>Nova Scotia (Halifax)</td>
-            <td><figure><img src="images/NS.png" alt="NS" width="100px" height="75px"></figure></td>
-            </tr>
-            <tr>
-            <td>New Brunswick (Fredericton)</td>
-            <td><figure><img src="images/NB.png" alt="NB" width="100px" height="75px"></figure></td>
-            </tr>
-            
-            <tr>
-            <th rowspan="2">Central Canada</th>
-            <td>Quebec (Quebec City)</td>
-            <td><figure><img src="images/QB.png" alt="QB" width="100px" height="75px"></figure></td>
-            </tr>
-            <tr>
-            <td>Ontario (Toronto) </td>
-            <td><figure><img src="images/ON.png" alt="ON" width="100px" height="75px"></figure></td>
-            </tr>
-            
-            <tr>
-                <th rowspan="3">Prairie Provinces</th>
-            <td>Manitoba (Winnipeg) </td>
-            <td><figure><img src="images/MB.png" alt="MB" width="100px" height="75px"></figure></td>
-            </tr>
-            <tr>
-            <td>Saskatchewan (Regina) </td>
-            <td><figure><img src="images/SK.png" alt="SK" width="100px" height="75px"></figure></td>
-            </tr>
-            <tr>
-            <td>Alberta (Edmonton)</td>
-            <td><figure><img src="images/AL.png" alt="AL" width="100px" height="75px"></figure></td>
-            </tr>
-            
-            <tr>
-            <th rowspan="1">West Coast</th>
-            <td>British Columbia (Vancouver)</td>
-            <td><figure><img src="images/BC.png" alt="BC" width="100px" height="75px"></figure></td>
-            </tr>
-        <tr>  
-            <th rowspan="3">North</th>
-            <td>Nunavut (Iqaluit)</td>
-            </tr>
-            <tr>
-            <td>Northwest Territories (Yellow knife)</td>
-            </tr>
-            <tr>
-            <td>Yukon Territory(Whitehorse)</td>
-            </tr>
-        
-        </table>
-    </div>
+  <table class = "center">
+    <tr>
+      <th>REGION</th>
+      <td>PROVINCE/ TERRITORY (CAPITAL CITY)</td>
+      <td>FLAG</td>
+    </tr>
+    
+    <tr>
+      <th rowspan="4">Atlantic Provinces</th>
+      <td>Newfoundland and Labrador (St. John's)</td>
+      <td><figure><img src="images/NL.png" alt="Newfoundland" width="100px" height="75px"></figure></td>
+    </tr>
+    <tr>
+      <td>Prince Edward Island (Charlottetown)</td>
+      <td><figure><img src="images/PE.png" alt="PE" width="100px" height="75px"></figure></td>
+    </tr>
+    <tr>
+      <td>Nova Scotia (Halifax)</td>
+      <td><figure><img src="images/NS.png" alt="NS" width="100px" height="75px"></figure></td>
+    </tr>
+    <tr>
+      <td>New Brunswick (Fredericton)</td>
+      <td><figure><img src="images/NB.png" alt="NB" width="100px" height="75px"></figure></td>
+    </tr>
+    
+    <tr>
+      <th rowspan="2">Central Canada</th>
+      <td>Quebec (Quebec City)</td>
+      <td><figure><img src="images/QB.png" alt="QB" width="100px" height="75px"></figure></td>
+    </tr>
+    <tr>
+      <td>Ontario (Toronto) </td>
+      <td><figure><img src="images/ON.png" alt="ON" width="100px" height="75px"></figure></td>
+    </tr>
+    
+    <tr>
+        <th rowspan="3">Prairie Provinces</th>
+      <td>Manitoba (Winnipeg) </td>
+      <td><figure><img src="images/MB.png" alt="MB" width="100px" height="75px"></figure></td>
+    </tr>
+    <tr>
+      <td>Saskatchewan (Regina) </td>
+      <td><figure><img src="images/SK.png" alt="SK" width="100px" height="75px"></figure></td>
+    </tr>
+    <tr>
+      <td>Alberta (Edmonton)</td>
+      <td><figure><img src="images/AL.png" alt="AL" width="100px" height="75px"></figure></td>
+    </tr>
+    
+    <tr>
+    <th rowspan="1">West Coast</th>
+      <td>British Columbia (Vancouver)</td>
+      <td><figure><img src="images/BC.png" alt="BC" width="100px" height="75px"></figure></td>
+    </tr>
+   <tr>  
+      <th rowspan="3">North</th>
+      <td>Nunavut (Iqaluit)</td>
+    </tr>
+    <tr>
+      <td>Northwest Territories (Yellow knife)</td>
+    </tr>
+    <tr>
+      <td>Yukon Territory(Whitehorse)</td>
+    </tr>
+  
+  </table>
+  
   <div class="footer">
-    <p>Created by Hyerin Mun. Youn can find more information on this following website: https://www.canada.ca/en.html </p>
+    <p>Created by Hyerin Mun. Youn can find more information on this following website: <a href= "https://www.canada.ca/en.html"</a></p>
   </div>
 </body>
 

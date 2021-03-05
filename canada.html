@@ -65,7 +65,7 @@
     };
 
 
-    var canada = new FeatureLayer({
+    var map = new FeatureLayer({
     url: 
         "https://utility.arcgis.com/usrsvcs/servers/70e5b04ed53f4fadbf45a7524511621c/rest/services/Geom99lab2/HmunCanada/MapServer/0",
         labelingInfo: [labelClass],
@@ -93,13 +93,13 @@
               }
             });
 
-            map.add(canada);
+            map.add(map);
             const graphicsLayer = new GraphicsLayer();
             map.add(graphicsLayer);
 
             const capital = {
                 type: "simple-marker",
-                color: [0, 204, 204],  // Baby blue
+                color: [94, 25, 20],  // Color of Canada
                 outline: {
                     color: [255, 255, 255], // White
                     width: 1
